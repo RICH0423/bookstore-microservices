@@ -1,12 +1,18 @@
-package com.delta.ssir.dbee.exception;
+package com.rich.bookstore.order.exception;
 
-public class StorageException extends RuntimeException {
+import lombok.Getter;
 
-    public StorageException(String message) {
+@Getter
+public class InventoryInsufficientException extends RuntimeException {
+
+    private String itemId;
+    private long currentQuantity;
+    private long requestQuantity;
+
+    public InventoryInsufficientException(String message, String itemId, long currentQuantity, long requestQuantity) {
         super(message);
-    }
-
-    public StorageException(String message, Throwable cause) {
-        super(message, cause);
+        this.itemId = itemId;
+        this.currentQuantity = currentQuantity;
+        this.requestQuantity = requestQuantity;
     }
 }

@@ -1,0 +1,12 @@
+server:
+  port: 8761
+#  servlet:
+#    context-path: /service-discovery
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+logging:
+  level:
+    com.netflix.eureka: true
+    com.netflix.discovery: true

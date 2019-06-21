@@ -1,4 +1,4 @@
-package com.rich.bookstore.inventory.repository.entity;
+package com.rich.bookstore.order.repository.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
