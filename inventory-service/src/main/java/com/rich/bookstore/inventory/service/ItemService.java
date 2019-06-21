@@ -23,10 +23,10 @@ public class ItemService {
 
     public void initItems() {
         List<Item> items = new ArrayList<>();
-        items.add(new Item("1", "Kubernetes in action", 10, System.currentTimeMillis()));
-        items.add(new Item("2", "Amazon web services action", 5, System.currentTimeMillis()));
-        items.add(new Item("3", "Clean Architecture", 5, System.currentTimeMillis()));
-        items.add(new Item("4", "Mastering Machine Learning with scikit-learn", 2, System.currentTimeMillis()));
+        items.add(new Item("1", "Kubernetes in action", 10, 650, System.currentTimeMillis()));
+        items.add(new Item("2", "Amazon web services action", 5, 450, System.currentTimeMillis()));
+        items.add(new Item("3", "Clean Architecture", 5, 500, System.currentTimeMillis()));
+        items.add(new Item("4", "Mastering Machine Learning with scikit-learn", 2, 750, System.currentTimeMillis()));
 
         Set<String> ids = items.stream()
                 .map(Item::getId)
