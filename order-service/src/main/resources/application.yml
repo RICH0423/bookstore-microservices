@@ -12,8 +12,8 @@ spring:
     database: bookstore
 
 service:
-  inventory: http://localhost:8081/inventory
+  inventory: inventory-service
 
 api:
   inventory:
-    getItemById: ${service.inventory}/items/%s
+    item: inventory/items

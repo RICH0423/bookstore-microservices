@@ -16,7 +16,7 @@ import java.util.Set;
 @CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/items")
-public class BookItmesController {
+public class BookItemController {
 
     @Autowired
     private DiscoveryClient discoveryClient;
@@ -39,7 +39,7 @@ public class BookItmesController {
     }
 
     @GetMapping("/{id}")
-    public Item getInfoLog(@PathVariable("id") String id) {
+    public Item getItemById(@PathVariable("id") String id) {
         return itemService.get(id);
     }
 
