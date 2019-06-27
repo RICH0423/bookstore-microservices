@@ -4,9 +4,9 @@ import com.rich.bookstore.order.exception.EntityNotFoundException;
 import com.rich.bookstore.order.exception.InventoryInsufficientException;
 import com.rich.bookstore.order.repository.entity.Item;
 import com.rich.bookstore.order.repository.entity.Order;
+import com.rich.bookstore.order.service.client.InventoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -15,13 +15,10 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class OrderService {
 
-    @Value("${api.inventory.getItemById}")
-    private String getItemByIdApi;
-
     private RestTemplate restTemplate;
 
-    private static final boolean INSUFFICIENT = false;
-    private static final boolean SUFFICIENT = true;
+    @Autowired
+    InventoryService inventoryService;
 
     @Autowired
     public OrderService(RestTemplateBuilder builder) {
@@ -34,10 +31,7 @@ public class OrderService {
 
 
     public void isQuantitySufficient(Order order) {
-        String uri = String.format(getItemByIdApi, order.getItemId());
-        log.debug("The uri of Get item api: {}", uri);
-
-        Item item = restTemplate.getForEntity(uri, Item.class).getBody();
+        Item item = inventoryService.getItemById(order.getItemId());
         if(item == null) {
             throw new EntityNotFoundException("Item not found", order.getItemId());
         }
