@@ -4,13 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.rich.bookstore</groupId>
-		<artifactId>parent-modules</artifactId>
+		<artifactId>bookstore-microservices</artifactId>
 		<version>1.0.0</version>
 	</parent>
 
 	<groupId>com.rich.bookstore</groupId>
 	<artifactId>service-discovery</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>service-discovery</name>
 	<description>Demo project for Spring Boot</description>
 

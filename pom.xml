@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.rich.bookstore</groupId>
-    <artifactId>parent-modules</artifactId>
+    <artifactId>bookstore-microservices</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
@@ -41,5 +41,6 @@
     <module>order-service</module>
     <module>inventory-service</module>
     <module>service-discovery</module>
+    <module>api-gateway</module>
   </modules>
 </project>
