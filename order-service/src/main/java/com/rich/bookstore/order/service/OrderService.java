@@ -2,6 +2,7 @@ package com.rich.bookstore.order.service;
 
 import com.rich.bookstore.order.exception.EntityNotFoundException;
 import com.rich.bookstore.order.exception.InventoryInsufficientException;
+import com.rich.bookstore.order.repository.OrderRepository;
 import com.rich.bookstore.order.repository.entity.Item;
 import com.rich.bookstore.order.repository.entity.Order;
 import com.rich.bookstore.order.service.client.InventoryService;
@@ -11,19 +12,18 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @Slf4j
 @Service
 public class OrderService {
 
-    private RestTemplate restTemplate;
+    @Autowired
+    private InventoryService inventoryService;
 
     @Autowired
-    InventoryService inventoryService;
+    private OrderRepository orderRepository;
 
-    @Autowired
-    public OrderService(RestTemplateBuilder builder) {
-        this.restTemplate = builder.build();
-    }
 
     public void createOrder(Order order) {
         isQuantitySufficient(order);
@@ -40,5 +40,9 @@ public class OrderService {
             throw new InventoryInsufficientException("Item inventory insufficient", order.getItemId(),
                     item.getQuantity(), order.getQuantity());
         }
+    }
+
+    public List<Order> findAll() {
+        return orderRepository.findAll();
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -52,5 +53,21 @@ public class ItemService {
     public List<Item> getAllItems() {
         Set<String> idSet = redisTemplate.keys(ITEM_KEY_PREFIX + "*");
         return redisTemplate.opsForValue().multiGet(idSet);
+    }
+
+    /**
+     * Create item.
+     *
+     * @param item
+     * @return created id of item.
+     */
+    public String createItem(Item item) {
+        String uuid = UUID.randomUUID().toString();
+        item.setId(uuid);
+
+        String key = ITEM_KEY_PREFIX + uuid;
+        redisTemplate.opsForValue().set(key, item);
+
+        return uuid;
     }
 }

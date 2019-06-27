@@ -7,16 +7,21 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
 
+/**
+ * @author rich
+ */
 @Slf4j
 @CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/items")
-public class BookItemController {
+public class ItemController {
 
     @Autowired
     private DiscoveryClient discoveryClient;
@@ -35,7 +40,9 @@ public class BookItemController {
     }
 
     @PostMapping
-    public void createItem(@RequestBody Item item) {
+    public ResponseEntity<String> createItem(@RequestBody Item item) {
+        String createdId = itemService.createItem(item);
+        return new ResponseEntity<>(createdId, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")

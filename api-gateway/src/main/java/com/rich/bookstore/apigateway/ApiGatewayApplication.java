@@ -2,7 +2,12 @@ package com.rich.bookstore.apigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+/**
+ * @author rich
+ */
+@EnableDiscoveryClient
 @SpringBootApplication
 public class ApiGatewayApplication {
 

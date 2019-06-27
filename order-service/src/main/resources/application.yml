@@ -7,7 +7,7 @@ spring:
   application:
     name: order-service
   data.mongodb:
-    host: mongodb
+    host: localhost
     port: 27017
     database: bookstore
 

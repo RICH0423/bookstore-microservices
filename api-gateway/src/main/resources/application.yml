@@ -1,27 +1,35 @@
 server:
-  port: 9000
+  port: ${PORT:9000}
 
 spring:
   application:
-    name: api-gateway
+    name: gateway-service
   cloud:
     gateway:
       discovery:
         locator:
           enabled: true
       routes:
-      - id: order-service
-        uri: lb://ORDER-SERVICE/order
+      - id: inventory-service
+        uri: lb://inventory-service/order
         predicates:
-        - path=/order/**
-#        filters:
-#        - RewritePath=/order/(?<path>.*), /$\{path}
+        - Path=/inventory/**
+      - id: order-service
+        uri: lb://order-service/order
+        predicates:
+        - Path=/order/**
+        # filters:
+        # - RewritePath=/order/(?<path>.*), /$\{path}
 eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-  instance:
-    preferIpAddress: true
+    registerWithEureka: false
+
 logging:
   level:
-    org.springframework.cloud.gateway: debug
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: INFO
+    reactor.netty: INFO
