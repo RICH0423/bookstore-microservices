@@ -1,15 +1,14 @@
 # Building Bookstore application with Microservices
 
 ### Spring Cloud Framework
-- Spring Cloud provides: 
-  - tools for developers to quickly build Microservices patterns in distributed systems
-  - features and components that make your application compliant with [Twelve-Factor rules](https://12factor.net).
-	  - Distributed/versioned configuration
-	  - Service registration and discovery
-	  - Routing
-	  - Load balancing
-	  - Circuit Breakers
-	  - Distributed messaging
+- provides tools for developers to quickly build Microservices patterns in distributed systems
+- provides features and components that make your application compliant with [Twelve-Factor rules](https://12factor.net).
+  - Distributed/versioned configuration
+  - Service registration and discovery
+  - Routing
+  - Load balancing
+  - Circuit Breakers
+  - Distributed messaging
 
 ### Architecture Design for Bookstore
 
