@@ -1,0 +1,19 @@
+server:
+  port: 0
+  servlet:
+    context-path: /order
+
+spring:
+  application:
+    name: order-service
+  data.mongodb:
+    host: localhost
+    port: 37017
+    database: bookstore
+
+service:
+  inventory: inventory-service
+
+api:
+  inventory:
+    item: inventory/items

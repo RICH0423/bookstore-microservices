@@ -1,7 +1,8 @@
 server:
   port: 8761
-#  servlet:
-#    context-path: /service-discovery
+spring:
+  application:
+    name: service-discovery
 eureka:
   client:
     registerWithEureka: false

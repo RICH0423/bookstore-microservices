@@ -1,19 +1,59 @@
+spring:
+  profiles:
+    active: "local"
+  application:
+    name: order-service
+
+---
+spring:
+  profiles: local
+  data.mongodb:
+    host: localhost
+    port: 27017
+    database: bookstore
 server:
   port: 8082
   servlet:
     context-path: /order
 
+service:
+  inventory: inventory-service
+api:
+  inventory:
+    item: inventory/items
+
+eureka:
+  instance:
+    metadataMap:
+      zone: zone1
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+      preferSameZoneEureka: true
+
+---
 spring:
-  application:
-    name: order-service
+  profiles: dev
   data.mongodb:
     host: localhost
     port: 27017
     database: bookstore
+server:
+  port: 8082
+  servlet:
+    context-path: /order
 
 service:
   inventory: inventory-service
-
 api:
   inventory:
     item: inventory/items
+
+eureka:
+  instance:
+    metadataMap:
+      zone: zone1
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+      preferSameZoneEureka: true
